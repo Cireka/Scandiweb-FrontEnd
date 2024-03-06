@@ -1,36 +1,50 @@
 <script setup>
+import Footer from "../components/footer.vue";
+import ProductsSection from "../components/ProductsSection.vue";
+import router from "../Router/Router.js";
 
+const AddProductPage = () => {
+
+  router.push('/AddProducts')
+
+}
 </script>
 
+
 <template>
-<header>
-  <h1>Product List</h1>
-  <div class="Buttons-Parent">
-    <button class="Add-Button">ADD</button>
-    <button id="delete-product-btn">MASS DELETE</button>
+  <header>
+    <h1>Product List</h1>
+    <div class="Buttons-Parent">
+      <button @click="AddProductPage" class="Add-Button">ADD</button>
+      <button id="delete-product-btn">MASS DELETE</button>
+    </div>
+  </header>
+  <div class="products-footer-container">
+    <ProductsSection/>
+    <Footer/>
   </div>
-</header>
 </template>
 
 
+<style >
 
-<style scoped>
-
-header{
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
-  padding-bottom: 12px;
+  border-bottom: 1px outset rgba(164, 164, 164, 0.3);
+  border-radius: 4px;
+  margin-bottom: 42px;
 }
 
-.Buttons-Parent{
+.Buttons-Parent {
   display: flex;
   justify-content: space-between;
   gap: 12px;
 
 }
-.Add-Button,#delete-product-btn {
+
+.Add-Button, #delete-product-btn {
   transition: ease-in-out 0.3s;
   border: none;
   width: auto;
@@ -38,27 +52,36 @@ header{
   padding: 12.2px;
   border-radius: 4px;
 }
-.Add-Button,#delete-product-btn:hover {
+
+.Add-Button, #delete-product-btn:hover {
   transition: ease-in-out 0.3s;
   cursor: pointer;
 }
 
 
-#delete-product-btn{
+#delete-product-btn {
   background-color: #d13e3e;
   color: white;
 }
+
 #delete-product-btn:hover {
   background-color: #d65151;
 }
 
- .Add-Button:hover{
-   background-color: #e5e1da;
- }
+.Add-Button:hover {
+  background-color: #e5e1da;
+}
 
-.Add-Button{
+.Add-Button {
   background-color: #cecbc4;
   color: black;
+}
+
+.products-footer-container{
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 </style>
