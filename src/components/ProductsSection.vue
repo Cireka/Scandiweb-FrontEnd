@@ -7,6 +7,10 @@ import ProductBox from "./ProductBox.vue";
 <section class="Products-list">
   <ProductBox/>
   <ProductBox/>
+  <ProductBox/>
+  <ProductBox/>
+
+
 </section>
 </template>
 
@@ -18,8 +22,5 @@ import ProductBox from "./ProductBox.vue";
   align-items: flex-start;
   justify-content: start;
   gap: 32px;
-  margin-bottom: 32px;
-  height: auto;
-
 }
 </style>

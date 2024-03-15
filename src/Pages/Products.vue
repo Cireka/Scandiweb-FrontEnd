@@ -1,28 +1,28 @@
 <script setup>
-import Footer from "../components/footer.vue";
+import {useProductStore} from "../stores/products.js";
 import ProductsSection from "../components/ProductsSection.vue";
 import router from "../Router/Router.js";
 
 const AddProductPage = () => {
-
   router.push('/AddProducts')
-
 }
+const product= useProductStore();
+
+product.getAllProducts()
 </script>
 
 
 <template>
-  <header>
-    <h1>Product List</h1>
-    <div class="Buttons-Parent">
-      <button @click="AddProductPage" class="Add-Button">ADD</button>
-      <button id="delete-product-btn">MASS DELETE</button>
-    </div>
-  </header>
-  <div class="products-footer-container">
+    <header>
+      <h1>Product List</h1>
+      <div class="Buttons-Parent">
+        <button @click="AddProductPage" class="Add-Button">ADD</button>
+        <button id="delete-product-btn">MASS DELETE</button>
+      </div>
+    </header>
     <ProductsSection/>
-    <Footer/>
-  </div>
+
+
 </template>
 
 
@@ -85,5 +85,4 @@ header {
 }
 
 </style>
-
 

@@ -2,6 +2,7 @@
 
 import router from "../Router/Router.js";
 import Form from "../components/Form Components/Form.vue";
+import Footer from "../components/footer.vue";
 
 const goBack = () => {
   router.back()
@@ -21,6 +22,13 @@ const goBack = () => {
 </template>
 
 <style scoped>
+.products-footer-container {
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .saveButton {
   transition: ease-in-out 0.3s;
   border: none;
