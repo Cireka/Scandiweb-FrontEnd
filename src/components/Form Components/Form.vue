@@ -6,14 +6,11 @@ import {ref} from "vue";
 
 const SelectedType = ref(null);
 
-const setValue = () => {
-  console.log(SelectedType.value)
-}
 
 </script>
 
 <template>
-  <form  id="product_id">
+  <form id="product_id">
     <div>
       <label for="sku">SKU</label>
       <input required id="sku" type="text"/>
@@ -28,7 +25,7 @@ const setValue = () => {
     </div>
     <div>
       <label for="productType">Type Switcher</label>
-      <select required v-model="SelectedType" @change="setValue" id="productType">
+      <select required v-model="SelectedType" id="productType">
         <option selected disabled value="null">Type Switcher</option>
         <option value="DVD">DVD</option>
         <option value="Book">Book</option>

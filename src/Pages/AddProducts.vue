@@ -2,10 +2,14 @@
 
 import router from "../Router/Router.js";
 import Form from "../components/Form Components/Form.vue";
-import Footer from "../components/footer.vue";
+
 
 const goBack = () => {
   router.back()
+}
+
+const submitForm = (formValues) => {
+
 }
 
 </script>
@@ -15,10 +19,10 @@ const goBack = () => {
     <h1>Add Product</h1>
     <div class="Buttons-Parent">
       <button @click="goBack" class="Add-Button">Cancel</button>
-      <button class="saveButton">Save</button>
+      <button @click="submitForm" class="saveButton">Save</button>
     </div>
   </header>
-  <Form/>
+  <Form />
 </template>
 
 <style scoped>
