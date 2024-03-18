@@ -1,14 +1,19 @@
 <script setup>
+import {ref} from "vue";
+
+const dvdProps= ref({
+  size_mb: 0
+})
 
 </script>
 
 <template>
-<form>
-  <div>
+
+  <div @change="$emit('setDvdSize',dvdProps)">
     <label for="size">Size (mb)</label>
-    <input required id="size" type="number"/>
+    <input  required id="size" type="number" v-model="dvdProps.size_mb"/>
   </div>
-</form>
+
 </template>
 
 <style scoped>

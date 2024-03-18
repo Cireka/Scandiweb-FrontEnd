@@ -1,5 +1,4 @@
 <script setup>
-
 import router from "../Router/Router.js";
 import Form from "../components/Form Components/Form.vue";
 

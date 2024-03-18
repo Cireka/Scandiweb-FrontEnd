@@ -4,16 +4,35 @@ import FurnitureForm from "./FurnitureForm.vue";
 import BookForm from "./BookForm.vue";
 import {ref} from "vue";
 
-const SelectedType = ref(null);
+const formData = ref({
+  name: "",
+  sku: "",
+  price: 0,
+  type: "",
+  typeProps: {}
+})
+
+
+
+const test = (event) => {
+  event.preventDefault();
+  console.log(formData.value)
+}
+const extractItemProps = (data) => {
+  formData.value.typeProps = data;
+}
+
 
 
 </script>
 
 <template>
+
   <form id="product_id">
     <div>
+      <button @click="test">Test</button>
       <label for="sku">SKU</label>
-      <input required id="sku" type="text"/>
+      <input v-model="formData.name" required id="sku" type="text"/>
     </div>
     <div>
       <label for="name">Name</label>
@@ -25,7 +44,7 @@ const SelectedType = ref(null);
     </div>
     <div>
       <label for="productType">Type Switcher</label>
-      <select required v-model="SelectedType" id="productType">
+      <select required v-model="formData.type" id="productType">
         <option selected disabled value="null">Type Switcher</option>
         <option value="DVD">DVD</option>
         <option value="Book">Book</option>
@@ -33,9 +52,9 @@ const SelectedType = ref(null);
       </select>
     </div>
     <div>
-      <DvdForm v-if="SelectedType === 'DVD'"/>
-      <FurnitureForm v-if="SelectedType === 'Furniture'"/>
-      <BookForm v-if="SelectedType === 'Book'"/>
+      <DvdForm @setDvdSize="extractItemProps"  v-if="formData.type === 'DVD'"/>
+      <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
+      <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
     </div>
   </form>
 </template>

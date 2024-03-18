@@ -1,14 +1,16 @@
 <script setup>
+import {ref} from "vue";
 
+const bookWeight = ref({
+  weight: 0
+})
 </script>
 
 <template>
-  <form>
-    <div>
-      <label for="weight">Weight (KG)</label>
-      <input required id="weight" type="number"/>
-    </div>
-  </form>
+  <div @change="$emit('setBookWeight',bookWeight)">
+    <label for="weight">Weight (KG)</label>
+    <input v-model="bookWeight.weight" required id="weight" type="number"/>
+  </div>
 </template>
 
 <style scoped>

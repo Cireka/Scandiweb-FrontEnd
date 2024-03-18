@@ -1,22 +1,29 @@
 <script setup>
+import {ref} from "vue";
 
+const furnitureProps = ref({
+  height: 0,
+  width: 0,
+  length: 0
+})
 </script>
 
 <template>
-  <form>
+  <div @change="$emit('setDvdProps',furnitureProps)">
     <div>
       <label for="height">Height (CM)</label>
-      <input required  id="height" type="text"/>
+      <input v-model="furnitureProps.height" required id="height" type="text"/>
     </div>
     <div>
       <label for="width">Width (CM)</label>
-      <input required  id="width" type="text"/>
+      <input v-model="furnitureProps.width" required id="width" type="text"/>
     </div>
     <div>
       <label for="length">Length (CM)</label>
-      <input  required id="length" type="text"/>
+      <input v-model="furnitureProps.length" required id="length" type="text"/>
     </div>
-  </form>
+  </div>
+
 </template>
 
 <style scoped>
