@@ -1,13 +1,16 @@
 <script setup>
 import router from "../Router/Router.js";
 import Form from "../components/Form Components/Form.vue";
+import {ref} from "vue";
+const childComponent = ref()
 
 
 const goBack = () => {
   router.back()
 }
 
-const submitForm = (formValues) => {
+const submitForm = () => {
+  childComponent.value.dispatchPostRequest();
 
 }
 
@@ -21,7 +24,7 @@ const submitForm = (formValues) => {
       <button @click="submitForm" class="saveButton">Save</button>
     </div>
   </header>
-  <Form />
+  <Form ref="childComponent"/>
 </template>
 
 <style scoped>

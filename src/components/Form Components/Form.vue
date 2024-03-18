@@ -3,44 +3,46 @@ import DvdForm from "./DvdForm.vue";
 import FurnitureForm from "./FurnitureForm.vue";
 import BookForm from "./BookForm.vue";
 import {ref} from "vue";
+import {useStore} from "vuex";
+
+const {dispatch} = useStore()
 
 const formData = ref({
   name: "",
   sku: "",
-  price: 0,
+  price: "",
   type: "",
-  typeProps: {}
 })
+const typeProps = ref({})
 
-
+const dispatchPostRequest = () => {
+  dispatch("postProduct", {formData, typeProps},)
+}
 
 const test = (event) => {
   event.preventDefault();
   console.log(formData.value)
 }
 const extractItemProps = (data) => {
-  formData.value.typeProps = data;
+  typeProps.value = data;
 }
 
-
-
+defineExpose({dispatchPostRequest})
 </script>
-
 <template>
-
   <form id="product_id">
     <div>
       <button @click="test">Test</button>
       <label for="sku">SKU</label>
-      <input v-model="formData.name" required id="sku" type="text"/>
+      <input v-model="formData.sku" required id="sku" type="text"/>
     </div>
     <div>
       <label for="name">Name</label>
-      <input required id="name" type="text"/>
+      <input v-model="formData.name" required id="name" type="text"/>
     </div>
     <div>
       <label for="price">Price ($)</label>
-      <input required id="price" type="number"/>
+      <input required id="price" type="number" v-model="formData.price"/>
     </div>
     <div>
       <label for="productType">Type Switcher</label>
@@ -52,13 +54,12 @@ const extractItemProps = (data) => {
       </select>
     </div>
     <div>
-      <DvdForm @setDvdSize="extractItemProps"  v-if="formData.type === 'DVD'"/>
+      <DvdForm @setDvdSize="extractItemProps" v-if="formData.type === 'DVD'"/>
       <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
       <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
     </div>
   </form>
 </template>
-
 <style scoped>
 form {
   display: flex;

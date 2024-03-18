@@ -5,7 +5,7 @@ export const store = createStore({
     state() {
         return {
             data: [],
-            formData: {}
+            formData: []
         }
     },
     actions: {
@@ -18,17 +18,27 @@ export const store = createStore({
                     console.log(error)
                 });
         },
-        setFormData({commit},payload){
-            console.log(payload);
+        postProduct({commit}, payload) {
+            const {formData, typeProps} = payload
+            axios.post('http://localhost:8000/postProduct', {
+                ...formData.value, ...typeProps.value
+
+
+            }, {})
+                .then(response => {
+
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
         }
     },
     mutations: {
         setData(state, payload) {
             state.data = payload;
         },
-        setForm(state, payload) {
-            state.formData = payload;
-        }
+
     },
 
 
