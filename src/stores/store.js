@@ -18,8 +18,9 @@ export const store = createStore({
                     console.log(error)
                 });
         },
-        postProduct({commit}, payload) {
+        postProduct({commit},payload) {
             const {formData, typeProps} = payload
+
             axios.post('http://localhost:8000/postProduct', {
                 ...formData.value, ...typeProps.value
 
@@ -32,6 +33,14 @@ export const store = createStore({
                 .catch(error => {
                     console.error('There was an error!', error);
                 });
+        },
+        massDelete() {
+            axios.delete('http://localhost:8000/deleteProducts')
+                .then(response => {
+                    console.log(response)
+                }).catch(error => {
+                console.log(error)
+            })
         }
     },
     mutations: {

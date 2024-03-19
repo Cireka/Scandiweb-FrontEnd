@@ -11,7 +11,6 @@ const goBack = () => {
 
 const submitForm = () => {
   childComponent.value.dispatchPostRequest();
-
 }
 
 </script>

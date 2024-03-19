@@ -1,12 +1,16 @@
 <script setup>
 import ProductsSection from "../components/ProductsSection.vue";
 import router from "../Router/Router.js";
+import {useStore} from "vuex";
 
+const {dispatch} = useStore();
 const AddProductPage = () => {
   router.push('/AddProducts')
 }
-
-
+const handleDelete = ()=>{
+  dispatch('massDelete');
+  router.go();
+}
 </script>
 
 
@@ -15,7 +19,7 @@ const AddProductPage = () => {
     <h1>Product List</h1>
     <div class="Buttons-Parent">
       <button @click="AddProductPage" class="Add-Button">ADD</button>
-      <button id="delete-product-btn">MASS DELETE</button>
+      <button @click="handleDelete" id="delete-product-btn">MASS DELETE</button>
     </div>
   </header>
   <ProductsSection/>

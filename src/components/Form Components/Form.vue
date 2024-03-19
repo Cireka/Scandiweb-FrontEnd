@@ -18,21 +18,15 @@ const typeProps = ref({})
 const dispatchPostRequest = () => {
   dispatch("postProduct", {formData, typeProps},)
 }
-
-const test = (event) => {
-  event.preventDefault();
-  console.log(formData.value)
-}
 const extractItemProps = (data) => {
   typeProps.value = data;
 }
-
 defineExpose({dispatchPostRequest})
+
 </script>
 <template>
   <form id="product_id">
     <div>
-      <button @click="test">Test</button>
       <label for="sku">SKU</label>
       <input v-model="formData.sku" required id="sku" type="text"/>
     </div>
