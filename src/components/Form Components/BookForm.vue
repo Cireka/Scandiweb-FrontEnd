@@ -2,7 +2,7 @@
 import {ref} from "vue";
 
 const bookWeight = ref({
-  weight: 0
+  weight: null
 })
 </script>
 

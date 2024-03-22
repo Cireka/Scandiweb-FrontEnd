@@ -1,4 +1,7 @@
 <script setup>
+import {useStore} from "vuex";
+
+const {dispatch} = useStore();
 const props = defineProps({
   productData: Object,
 });
@@ -6,10 +9,12 @@ const props = defineProps({
 const handleCheckboxChange = (event) => {
   const checkStatus = event.target.checked;
   const sku = props.productData.SKU;
-
-  // push this data to global state
-  // inside state where all of the selected ids will gather
-
+  const type = props.productData.product_type
+  if (checkStatus) {
+    dispatch("gatherIds", {sku, type})
+  } else {
+    dispatch("removeIds", {sku, type})
+  }
 };
 
 </script>
@@ -18,6 +23,7 @@ const handleCheckboxChange = (event) => {
 <template>
   <div class="production-box">
     <input type="checkbox" class="delete-checkbox" @click="handleCheckboxChange">
+    <p>{{productData.SKU}}</p>
     <p>{{ productData.name }}</p>
     <p>{{ productData.product_type }}</p>
     <p>{{ productData.price }}</p>

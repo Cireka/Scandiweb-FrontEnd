@@ -2,35 +2,41 @@
 import {ref} from "vue";
 
 const furnitureProps = ref({
-  height: 0,
-  width: 0,
-  length: 0
+  height_cm: null,
+  width_cm: null,
+  length_cm: null
 })
 </script>
 
 <template>
-  <div @change="$emit('setDvdProps',furnitureProps)">
+  <div class="subFormsParent" @change="$emit('setDvdProps',furnitureProps)">
     <div>
       <label for="height">Height (CM)</label>
-      <input v-model="furnitureProps.height" required id="height" type="text"/>
+      <input v-model="furnitureProps.height_cm" required id="height" type="text"/>
     </div>
     <div>
       <label for="width">Width (CM)</label>
-      <input v-model="furnitureProps.width" required id="width" type="text"/>
+      <input v-model="furnitureProps.width_cm" required id="width" type="text"/>
     </div>
     <div>
       <label for="length">Length (CM)</label>
-      <input v-model="furnitureProps.length" required id="length" type="text"/>
+      <input v-model="furnitureProps.length_cm" required id="length" type="text"/>
     </div>
   </div>
 
 </template>
 
 <style scoped>
-form > div {
+.subFormsParent {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: start;
   gap: 12px;
+}
+
+.subFormsParent > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

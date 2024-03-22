@@ -3,13 +3,17 @@ import ProductsSection from "../components/ProductsSection.vue";
 import router from "../Router/Router.js";
 import {useStore} from "vuex";
 
-const {dispatch} = useStore();
+const {dispatch, state} = useStore();
 const AddProductPage = () => {
   router.push('/AddProducts')
 }
-const handleDelete = ()=>{
-  dispatch('massDelete');
-  router.go();
+const handleDelete = () => {
+  if (state.toDeleteItems.sku.length >= 1) {
+    dispatch("deleteById")
+  } else {
+    dispatch('massDelete');
+  }
+  // router.go();
 }
 </script>
 

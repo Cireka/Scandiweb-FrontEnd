@@ -2,6 +2,7 @@
 import router from "../Router/Router.js";
 import Form from "../components/Form Components/Form.vue";
 import {ref} from "vue";
+
 const childComponent = ref()
 
 
@@ -9,30 +10,29 @@ const goBack = () => {
   router.back()
 }
 
-const submitForm = () => {
+const submitForm = (event) => {
+
+  event.preventDefault()
   childComponent.value.dispatchPostRequest();
 }
 
 </script>
 
 <template>
-  <header>
-    <h1>Add Product</h1>
-    <div class="Buttons-Parent">
-      <button @click="goBack" class="Add-Button">Cancel</button>
-      <button @click="submitForm" class="saveButton">Save</button>
-    </div>
-  </header>
-  <Form ref="childComponent"/>
+  <form @submit="submitForm">
+    <header>
+      <h1>Add Product</h1>
+      <div class="Buttons-Parent">
+        <button @click="goBack" class="Add-Button">Cancel</button>
+        <button type="submit" class="saveButton">Save</button>
+      </div>
+    </header>
+   <Form ref="childComponent"/>
+  </form>
+
 </template>
 
 <style scoped>
-.products-footer-container {
-  min-height: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
 .saveButton {
   transition: ease-in-out 0.3s;

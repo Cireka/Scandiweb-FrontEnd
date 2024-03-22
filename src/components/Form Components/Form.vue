@@ -4,20 +4,26 @@ import FurnitureForm from "./FurnitureForm.vue";
 import BookForm from "./BookForm.vue";
 import {ref} from "vue";
 import {useStore} from "vuex";
+import router from "../../Router/Router.js";
 
 const {dispatch} = useStore()
 
 const formData = ref({
   name: "",
   sku: "",
-  price: "",
+  price: null,
   type: "",
 })
+
 const typeProps = ref({})
 
+
 const dispatchPostRequest = () => {
-  dispatch("postProduct", {formData, typeProps},)
+    dispatch("postProduct", {formData, typeProps})
+    router.push('/');
 }
+
+
 const extractItemProps = (data) => {
   typeProps.value = data;
 }
@@ -25,7 +31,7 @@ defineExpose({dispatchPostRequest})
 
 </script>
 <template>
-  <form id="product_id">
+  <div class="formContainer">
     <div>
       <label for="sku">SKU</label>
       <input v-model="formData.sku" required id="sku" type="text"/>
@@ -47,29 +53,27 @@ defineExpose({dispatchPostRequest})
         <option value="Furniture">Furniture</option>
       </select>
     </div>
-    <div>
-      <DvdForm @setDvdSize="extractItemProps" v-if="formData.type === 'DVD'"/>
-      <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
-      <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
-    </div>
-  </form>
+    <DvdForm @setDvdSize="extractItemProps" v-if="formData.type === 'DVD'"/>
+    <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
+    <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
+  </div>
 </template>
 <style scoped>
-form {
+.formContainer {
   display: flex;
   flex-direction: column;
   gap: 12px;
   width: 300px;
 }
 
-form > div {
+.formContainer > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-form > div > input {
+.formContainer > div > input {
   transition: ease-in-out 0.15s;
   padding: 4px;
   outline: none;
@@ -78,7 +82,7 @@ form > div > input {
 
 }
 
-form > div > input:focus {
+.formContainer > div > input:focus {
   transition: ease-in-out 0.15s;
   border: 1px outset rgba(73, 66, 228, 0.6);
 
@@ -87,7 +91,7 @@ form > div > input:focus {
   -moz-box-shadow: 0px -1px 8px 1px rgba(73, 66, 228, 0.75);
 }
 
-form > div > select {
+.formContainer > div > select {
   padding: 4px;
   outline: none;
 }
