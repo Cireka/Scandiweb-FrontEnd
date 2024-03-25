@@ -6,7 +6,6 @@ const props = defineProps({
   productData: Object,
 });
 
-
 const handleCheckboxChange = (event) => {
   const checkStatus = event.target.checked;
   const sku = props.productData.SKU;
@@ -18,7 +17,13 @@ const handleCheckboxChange = (event) => {
   }
 };
 
+const word = props.productData.product_type;
+const letterToRemove = "s";
 
+function removeLetter(word, letterToRemove) {
+  return word.replace(new RegExp(letterToRemove, 'gi'), '');
+}
+const formattedType = removeLetter(word, letterToRemove);
 </script>
 
 
@@ -26,9 +31,9 @@ const handleCheckboxChange = (event) => {
   <div class="production-box">
     <input type="checkbox" class="delete-checkbox" id="delete-checkbox" @click="handleCheckboxChange">
     <p>{{ productData.SKU }}</p>
-    <p>{{ productData.name }} {{ productData.product_type }}</p>
-    <p>{{ productData.price}} $</p>
-    <p>{{productData.attribute}}: {{productData.attribute_value}} {{productData.unit}}</p>
+    <p>{{ formattedType}}: {{ productData.name }}</p>
+    <p>{{ productData.price }} $</p>
+    <p>{{ productData.attribute }}: {{ productData.attribute_value }} {{ productData.unit }}</p>
   </div>
 </template>
 

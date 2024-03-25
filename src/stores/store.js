@@ -27,7 +27,7 @@ export const store = createStore({
                 ...formData.value, ...typeProps.value
             })
                 .then(response => {
-                    console.log(response);
+
                 })
                 .catch(error => {
                     console.error('There was an error!', error);
@@ -36,7 +36,6 @@ export const store = createStore({
         massDelete() {
             axios.delete('http://localhost:8000/deleteProducts')
                 .then(response => {
-                    console.log(response)
                 }).catch(error => {
                 console.log(error)
             })
@@ -49,7 +48,7 @@ export const store = createStore({
                 SKU: [...sku]
             })
                 .then(response => {
-                    console.log(response)
+
                 }).catch(error => {
                 console.log(error)
             })
