@@ -7,15 +7,18 @@ const bookWeight = ref({
 </script>
 
 <template>
-  <div @change="$emit('setBookWeight',bookWeight)">
-    <label for="weight">Weight (KG)</label>
-    <input v-model="bookWeight.weight" required id="weight" type="number"/>
+  <div>
+    <div class="subInputParent" @change="$emit('setBookWeight',bookWeight)">
+      <label for="weight">Weight (KG)</label>
+      <input v-model="bookWeight.weight" required id="#weight" type="number"/>
+    </div>
+    <p>Please provide value in Kilograms</p>
   </div>
 </template>
 
 <style scoped>
 
-form > div {
+.subInputParent {
   display: flex;
   align-items: center;
   justify-content: space-between;

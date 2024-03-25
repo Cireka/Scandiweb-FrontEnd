@@ -6,14 +6,15 @@ import {ref} from "vue";
 const childComponent = ref()
 
 
-const goBack = () => {
+const AbandonFormHandler =() => {
   router.back()
 }
 
 const submitForm = (event) => {
-
   event.preventDefault()
   childComponent.value.dispatchPostRequest();
+
+
 }
 
 </script>
@@ -23,7 +24,7 @@ const submitForm = (event) => {
     <header>
       <h1>Add Product</h1>
       <div class="Buttons-Parent">
-        <button @click="goBack" class="Add-Button">Cancel</button>
+        <button @click="AbandonFormHandler" class="leftButton">Cancel</button>
         <button type="submit" class="saveButton">Save</button>
       </div>
     </header>

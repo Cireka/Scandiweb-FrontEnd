@@ -13,7 +13,8 @@ const handleDelete = () => {
   } else {
     dispatch('massDelete');
   }
-  // router.go();
+    router.go();
+
 }
 </script>
 
@@ -22,7 +23,7 @@ const handleDelete = () => {
   <header>
     <h1>Product List</h1>
     <div class="Buttons-Parent">
-      <button @click="AddProductPage" class="Add-Button">ADD</button>
+      <button @click="AddProductPage" class="leftButton">ADD</button>
       <button @click="handleDelete" id="delete-product-btn">MASS DELETE</button>
     </div>
   </header>
@@ -50,7 +51,7 @@ header {
 
 }
 
-.Add-Button, #delete-product-btn {
+.leftButton, #delete-product-btn {
   transition: ease-in-out 0.3s;
   border: none;
   width: auto;
@@ -59,7 +60,7 @@ header {
   border-radius: 4px;
 }
 
-.Add-Button, #delete-product-btn:hover {
+.leftButton, #delete-product-btn:hover {
   transition: ease-in-out 0.3s;
   cursor: pointer;
 }
@@ -74,11 +75,11 @@ header {
   background-color: #d65151;
 }
 
-.Add-Button:hover {
+.leftButton:hover {
   background-color: #e5e1da;
 }
 
-.Add-Button {
+.leftButton {
   background-color: #cecbc4;
   color: black;
 }

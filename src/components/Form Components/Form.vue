@@ -19,8 +19,10 @@ const typeProps = ref({})
 
 
 const dispatchPostRequest = () => {
-    dispatch("postProduct", {formData, typeProps})
-    router.push('/');
+  dispatch("postProduct", {formData, typeProps})
+  setTimeout(()=>{
+    router.back();
+  },400)
 }
 
 
@@ -53,11 +55,14 @@ defineExpose({dispatchPostRequest})
         <option value="Furniture">Furniture</option>
       </select>
     </div>
-    <DvdForm @setDvdSize="extractItemProps" v-if="formData.type === 'DVD'"/>
-    <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
-    <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
+    <div>
+      <DvdForm @setDvdSize="extractItemProps" v-if="formData.type === 'DVD'"/>
+      <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
+      <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
+    </div>
   </div>
 </template>
+
 <style scoped>
 .formContainer {
   display: flex;

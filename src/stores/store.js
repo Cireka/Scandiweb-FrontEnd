@@ -25,11 +25,8 @@ export const store = createStore({
             const {formData, typeProps} = payload
             axios.post('http://localhost:8000/postProduct', {
                 ...formData.value, ...typeProps.value
-
-
             })
                 .then(response => {
-
                     console.log(response);
                 })
                 .catch(error => {
@@ -48,8 +45,8 @@ export const store = createStore({
             const {type, sku} = context.state.toDeleteItems
 
             axios.patch('http://localhost:8000/deleteProductsById',{
-                type:["books"],
-                SKU: ["2"]
+                type:[...type],
+                SKU: [...sku]
             })
                 .then(response => {
                     console.log(response)

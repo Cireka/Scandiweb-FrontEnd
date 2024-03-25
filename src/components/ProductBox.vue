@@ -6,6 +6,7 @@ const props = defineProps({
   productData: Object,
 });
 
+
 const handleCheckboxChange = (event) => {
   const checkStatus = event.target.checked;
   const sku = props.productData.SKU;
@@ -17,17 +18,17 @@ const handleCheckboxChange = (event) => {
   }
 };
 
+
 </script>
 
 
 <template>
   <div class="production-box">
-    <input type="checkbox" class="delete-checkbox" @click="handleCheckboxChange">
-    <p>{{productData.SKU}}</p>
-    <p>{{ productData.name }}</p>
-    <p>{{ productData.product_type }}</p>
-    <p>{{ productData.price }}</p>
-    <p>To Be Implemented</p>
+    <input type="checkbox" class="delete-checkbox" id="delete-checkbox" @click="handleCheckboxChange">
+    <p>{{ productData.SKU }}</p>
+    <p>{{ productData.name }} {{ productData.product_type }}</p>
+    <p>{{ productData.price}} $</p>
+    <p>{{productData.attribute}}: {{productData.attribute_value}} {{productData.unit}}</p>
   </div>
 </template>
 
