@@ -13,7 +13,7 @@ export const store = createStore({
     },
     actions: {
         fetchData({commit}) {
-            axios.get('http://localhost:8000/products')
+            axios.get('https://tsotne.alwaysdata.net/products')
                 .then(response => {
                     commit("setData", response.data)
                 })
@@ -23,7 +23,7 @@ export const store = createStore({
         },
         postProduct({commit}, payload) {
             const {formData, typeProps} = payload
-            axios.post('http://localhost:8000/postProduct', {
+            axios.post('https://tsotne.alwaysdata.net/postProduct', {
                 ...formData.value, ...typeProps.value
             })
                 .then(response => {
@@ -34,7 +34,7 @@ export const store = createStore({
                 });
         },
         massDelete() {
-            axios.delete('http://localhost:8000/deleteProducts')
+            axios.delete('https://tsotne.alwaysdata.net/deleteProducts')
                 .then(response => {
                 }).catch(error => {
                 console.log(error)
@@ -43,7 +43,7 @@ export const store = createStore({
         deleteById(context) {
             const {type, sku} = context.state.toDeleteItems
 
-            axios.patch('http://localhost:8000/deleteProductsById',{
+            axios.patch('https://tsotne.alwaysdata.net/deleteProductsById',{
                 type:[...type],
                 SKU: [...sku]
             })
