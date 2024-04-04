@@ -10,7 +10,7 @@ const bookWeight = ref({
   <div>
     <div class="subInputParent" @change="$emit('setBookWeight',bookWeight)">
       <label for="weight">Weight (KG)</label>
-      <input v-model="bookWeight.weight" required id="#weight" type="number"/>
+      <input v-model="bookWeight.weight" required id="weight" type="number"/>
     </div>
     <p>Please provide value in Kilograms</p>
   </div>

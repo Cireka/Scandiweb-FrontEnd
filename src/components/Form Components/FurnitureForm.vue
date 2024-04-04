@@ -19,15 +19,15 @@ const furnitureProps = computed(() => ({
   <div class="subFormsParent" @change="$emit('setDvdProps', furnitureProps)">
     <div>
       <label for="height">Height (CM)</label>
-      <input v-model="height" required id="#height" type="number" />
+      <input v-model="height" required id="height" type="number" />
     </div>
     <div>
       <label for="width">Width (CM)</label>
-      <input v-model="width" required id="#width" type="number" />
+      <input v-model="width" required id="width" type="number" />
     </div>
     <div>
       <label for="length">Length (CM)</label>
-      <input v-model="length" required id="#length" type="number" />
+      <input v-model="length" required id="length" type="number" />
     </div>
     <p>Please provide value in centimeters</p>
   </div>
