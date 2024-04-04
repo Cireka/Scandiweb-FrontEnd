@@ -36,11 +36,11 @@ defineExpose({dispatchPostRequest})
   <div class="formContainer">
     <div>
       <label for="sku">SKU</label>
-      <input v-model="formData.sku" required id="sku" type="text"/>
+      <input v-model="formData.sku" required id="#sku" type="text"/>
     </div>
     <div>
       <label for="name">Name</label>
-      <input v-model="formData.name" required id="name" type="text"/>
+      <input v-model="formData.name" required id="#name" type="text"/>
     </div>
     <div>
       <label for="price">Price ($)</label>
@@ -48,7 +48,7 @@ defineExpose({dispatchPostRequest})
     </div>
     <div>
       <label for="productType">Type Switcher</label>
-      <select required v-model="formData.type" id="productType">
+      <select required v-model="formData.type" id="#productType">
         <option selected disabled value="null">Type Switcher</option>
         <option value="dvd">DVD</option>
         <option value="Book">Book</option>

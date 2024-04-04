@@ -20,7 +20,7 @@ const submitForm = (event) => {
 </script>
 
 <template>
-  <form @submit="submitForm">
+  <form id="#product_form" @submit="submitForm">
     <header>
       <h1>Add Product</h1>
       <div class="Buttons-Parent">
