@@ -56,7 +56,7 @@ defineExpose({dispatchPostRequest})
       </select>
     </div>
     <div>
-      <DvdForm @setDvdSize="extractItemProps" v-if="formData.type === 'DVD'"/>
+      <DvdForm @setDvdSize="extractItemProps" v-if="formData.type === 'dvd'"/>
       <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
       <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
     </div>
