@@ -50,7 +50,7 @@ defineExpose({dispatchPostRequest})
       <label for="productType">Type Switcher</label>
       <select required v-model="formData.type" id="productType">
         <option selected disabled value="null">Type Switcher</option>
-        <option value="DVD">DVD</option>
+        <option value="dvd">DVD</option>
         <option value="Book">Book</option>
         <option value="Furniture">Furniture</option>
       </select>
