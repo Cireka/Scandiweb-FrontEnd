@@ -5,6 +5,10 @@ export const store = createStore({
     state() {
         return {
             data: [],
+            errorState: {
+                error: false,
+                errorMessage: []
+            },
             toDeleteItems: {
                 type: [],
                 sku: []
@@ -12,6 +16,16 @@ export const store = createStore({
         }
     },
     actions: {
+
+        setErrorMessage({commit}, payload) {
+            const {status, message, messageToRemove} = payload;
+            if (messageToRemove) {
+                commit("removeError", messageToRemove)
+            } else {
+                commit("setError", {status, message})
+            }
+
+        },
         fetchData({commit}) {
             axios.get('https://tsotne.alwaysdata.net/products')
                 .then(response => {
@@ -43,8 +57,8 @@ export const store = createStore({
         deleteById(context) {
             const {type, sku} = context.state.toDeleteItems
 
-            axios.patch('https://tsotne.alwaysdata.net/deleteProductsById',{
-                type:[...type],
+            axios.patch('https://tsotne.alwaysdata.net/deleteProductsById', {
+                type: [...type],
                 SKU: [...sku]
             })
                 .then(response => {
@@ -61,6 +75,19 @@ export const store = createStore({
         }
     },
     mutations: {
+        setError(state, payload) {
+            const {status, message} = payload
+            state.errorState.error = status;
+            state.errorState.errorMessage.push(message);
+        },
+        removeError(state, payload) {
+            const {messageToRemove} = payload;
+            state.errorState.errorMessage = state.errorState.errorMessage.filter(message => message === messageToRemove);
+            if (state.errorState.errorMessage.length === 0) {
+                console.log("Clear of errors")
+                state.errorState.error = false;
+            }
+        },
         setData(state, payload) {
             state.data = payload;
         },

@@ -13,8 +13,6 @@ const AbandonFormHandler =() => {
 const submitForm = (event) => {
   event.preventDefault()
   childComponent.value.dispatchPostRequest();
-
-
 }
 
 </script>

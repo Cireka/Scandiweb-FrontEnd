@@ -6,31 +6,34 @@ import {ref} from "vue";
 import {useStore} from "vuex";
 import router from "../../Router/Router.js";
 
-const {dispatch} = useStore()
-
+const {dispatch,state} = useStore()
 const formData = ref({
   name: "",
   sku: "",
   price: null,
   type: "",
 })
-
 const typeProps = ref({})
 
 
 const dispatchPostRequest = () => {
   dispatch("postProduct", {formData, typeProps})
-  setTimeout(()=>{
+  setTimeout(() => {
     router.back();
-  },400)
+  }, 400)
 }
 
+const sendError = (status, message) => {
+  dispatch("setErrorMessage", {status, message})
+}
+const clearError = (messageToRemove) => {
+  dispatch("setErrorMessage", {messageToRemove})
+}
 
 const extractItemProps = (data) => {
   typeProps.value = data;
 }
 defineExpose({dispatchPostRequest})
-
 </script>
 <template>
   <div class="formContainer">
@@ -40,11 +43,13 @@ defineExpose({dispatchPostRequest})
     </div>
     <div>
       <label for="name">Name</label>
-      <input v-model="formData.name" required id="name" type="text"/>
+      <input @input="clearError('Invalid Name Input')" @invalid="sendError(true,'Invalid Name Input')"
+             v-model="formData.name" required id="name" type="text"/>
     </div>
     <div>
       <label for="price">Price ($)</label>
-      <input required id="price" type="number" v-model="formData.price"/>
+      <input @input="clearError('Invalid Price Input')" @invalid="sendError(true,'Invalid Price Input')" required
+             id="price" type="number" v-model="formData.price"/>
     </div>
     <div>
       <label for="productType">Type Switcher</label>
@@ -60,10 +65,15 @@ defineExpose({dispatchPostRequest})
       <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
       <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
     </div>
+    <p id="Invalid_Input" class="errorMessage" v-if="state.errorState.error">{{state.errorState.errorMessage[0]}}!</p>
   </div>
 </template>
 
 <style scoped>
+.errorMessage{
+  margin: 0;
+  color: red;
+}
 .formContainer {
   display: flex;
   flex-direction: column;
