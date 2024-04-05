@@ -39,7 +39,7 @@ defineExpose({dispatchPostRequest})
   <div class="formContainer">
     <div>
       <label for="sku">SKU</label>
-      <input v-model="formData.sku" required id="sku" type="text"/>
+      <input   @input="clearError('Invalid Sku Input')"  @invalid="sendError(true,'Invalid Sku Input')" v-model="formData.sku" required id="sku" type="text" pattern="^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$"/>
     </div>
     <div>
       <label for="name">Name</label>
