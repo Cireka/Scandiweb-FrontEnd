@@ -44,8 +44,7 @@ defineExpose({dispatchPostRequest})
     <div>
       <label for="name">Name</label>
       <input @input="clearError('Invalid Name Input')" @invalid="sendError(true,'Invalid Name Input')"
-             v-model="formData.name" required id="name" type="text" pattern="[a-zA-Z]+"/>
-
+             v-model="formData.name" required id="name" type="text"/>
     </div>
     <div>
       <label for="price">Price ($)</label>
