@@ -65,12 +65,12 @@ defineExpose({dispatchPostRequest})
       <FurnitureForm @setDvdProps="extractItemProps" v-if="formData.type === 'Furniture'"/>
       <BookForm @setBookWeight="extractItemProps" v-if="formData.type === 'Book'"/>
     </div>
-    <p id="Invalid_Input" class="errorMessage" v-if="state.errorState.error">{{state.errorState.errorMessage[0]}}!</p>
+    <p id="Invalid_Input" class="Invalid_Input" v-if="state.errorState.error">{{state.errorState.errorMessage[0]}}!</p>
   </div>
 </template>
 
 <style scoped>
-.errorMessage{
+.Invalid_Input{
   margin: 0;
   color: red;
 }

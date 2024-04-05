@@ -84,7 +84,6 @@ export const store = createStore({
             const {messageToRemove} = payload;
             state.errorState.errorMessage = state.errorState.errorMessage.filter(message => message === messageToRemove);
             if (state.errorState.errorMessage.length === 0) {
-                console.log("Clear of errors")
                 state.errorState.error = false;
             }
         },
