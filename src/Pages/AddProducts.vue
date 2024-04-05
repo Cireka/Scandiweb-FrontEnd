@@ -30,7 +30,7 @@ const submitForm = (event) => {
       </div>
     </header>
    <Form ref="childComponent"/>
-    <p id="Invalid_Input" class="Invalid_Input" v-if="state.errorState.error">{{state.errorState.errorMessage[0]}}!</p>
+<!--    <p id="Invalid_Input" class="Invalid_Input" v-if="state.errorState.error">{{state.errorState.errorMessage[0]}}!</p>-->
   </form>
 
 </template>
